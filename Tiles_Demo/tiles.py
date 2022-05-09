@@ -41,7 +41,6 @@ class TileMap():
             # Read File/ Save CSV data as a List of Strings
             file = csv.reader(data, delimiter = ',')
 
-            # 
             # file = [
             #        string,
             #        string,
@@ -73,13 +72,9 @@ class TileMap():
         for row in self.map:
             x = 0
 
-            # Iterate each Row by Tile and Check the corresponding value
+            # Iterate each Row by Tile and Index the corresponding Image in the appropriate Array
             for tile in row:
-                if tile == '0':
-                    tiles.append(Tile(images_loc[0], x * self.tile_size, y * self.tile_size))
-
-                elif tile == '1':
-                    tiles.append(Tile(images_loc[1], x * self.tile_size, y * self.tile_size))
+                tiles.append(Tile(images_loc[int(tile)], x * self.tile_size, y * self.tile_size))
 
                 # Next Tile
                 x += 1
@@ -93,6 +88,7 @@ class TileMap():
     def draw_tiles(self, window):
         for tile in self.tiles:
             window.screen.blit(tile.image, tile.rect)
+
 
 # CSV Locations
 game_board_csv_loc = 'Map/game_board.csv'
