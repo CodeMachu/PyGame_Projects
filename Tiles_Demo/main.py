@@ -3,13 +3,13 @@ import pygame
 from window import *
 from tiles import *
 
-# Initialize Pygame
+# Initialize pygame
 pygame.init()
 
-# Load Game Board Tiles
+# Load game board tiles
 game_board.load_tiles(game_board_images_loc)
 
-# Update and Display Tiles
+# Update and display tiles
 def update_tiles():
     game_board.draw_tiles(window)
     pygame.display.update()
@@ -17,26 +17,26 @@ def update_tiles():
 # Main
 def main():
 
-    # Define Game Clock
+    # Define game clock
     clock = pygame.time.Clock()
     FPS = 60
 
-    # Main Loop
+    # Main loop
     while True:
 
-        # Set Frame Rate
+        # Set frame rate
         clock.tick(FPS)
 
-        # Check if the Quit Button has been pressed
+        # Check if the quit button has been pressed
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
 
-        # Update Tiles
+        # Update tiles
         update_tiles()
 
 
 #
-# Run Main 
+# Run main 
 if __name__ == "__main__":
     main()
