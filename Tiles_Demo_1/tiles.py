@@ -16,20 +16,6 @@ class Tile():
         self.rect.x = x
         self.rect.y = y
 
-        # Counting Tool
-        self.counter = 0
-
-    def move(self, window):
-        self.counter += 1
-        if self.counter > 3:
-            self.counter = 0
-        if self.counter == 3:
-            self.rect.x += 1
-        if self.rect.x > -1:
-            self.rect.x = -440
-        
-        window.screen.blit(self.image, self.rect)
-
 class TileMap():
 
     def __init__(self, csv_loc, images_loc):
@@ -97,7 +83,8 @@ class TileMap():
             # Next Row
             y += 1
 
-        return tiles
+        #
+        self.tiles = tiles
 
         # Returns a list of Tile Objects
         # tiles = [
@@ -115,11 +102,12 @@ class TileMap():
 # Image Locations Arrays
 game_board_images_loc = [
                         'Map/blank_tile.png',
-                        'Map/white_tile.png'
+                        'Map/white_tile.png',
+                        'Map/blue_tile.png',
+                        'Map/red_tile.png',
+                        'Map/green_tile.png',
+                        'Map/purple_tile.png'
                         ]
 
 # Game-Board TileMap
 game_board = TileMap('Map/game_board.csv', game_board_images_loc)
-
-# Stars Background
-stars_bg = Tile('Map/stars.png', -440, 0)

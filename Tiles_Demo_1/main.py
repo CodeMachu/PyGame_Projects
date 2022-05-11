@@ -1,17 +1,22 @@
 import pygame
+import random
 
 from window import *
 from tiles import *
+from background import *
+from colorchange import *
 
 # Initialize pygame
 pygame.init()
 
 # Load game board tiles
 game_board.load_tiles(game_board_images_loc)
-
+                    
 # Update and display tiles
 def update_tiles():
     stars_bg.move(window)
+    color_change(game_board.map)
+    game_board.load_tiles(game_board_images_loc)
     game_board.draw_tiles(window)
     pygame.display.update()
 
