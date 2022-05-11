@@ -3,7 +3,7 @@ import pygame
 from window import *
 from tiles import *
 from background import *
-from colorchange import *
+from mouse import *
 
 # Initialize pygame
 pygame.init()
@@ -14,10 +14,13 @@ game_board.load_tiles(game_board_images_loc)
 # Update and display tiles
 def update_tiles():
     stars_bg.move(window)
-    color_change(game_board.map)
-    game_board.load_tiles(game_board_images_loc)
     game_board.draw_tiles(window)
     pygame.display.update()
+
+def change_color():
+    mouse.detect_collision(game_board)
+    if mouse.detect_collision(game_board):
+        print('True')
 
 # Main
 def main():
@@ -36,6 +39,13 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        print("left mouse button pressed")
+                        mouse.detect_collision(game_board)
+                    elif event.button == 3:
+                        print("right mouse button pressed")
 
         # Update tiles
         update_tiles()
