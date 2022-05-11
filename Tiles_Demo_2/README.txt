@@ -1,10 +1,6 @@
-Added Background(Tile) Class
-    - Parent Class = Tile()
-    - Can now move individual tiles to create the illusion of a moving background.
+Added Mouse() Class
+    - Track Mouse Position and return Mouse Coordinates
+    - Detect Mouse Pointer Collision with Rectangles 
 
-Added module for a Tile-Color Randomizer
-    - Tiles change color dependent on random number generation, import random 
-    - Tiles are uniquely identified by position
-      or by assigning some variable for id.
-    - Conditions are set to ensure the outer edge of tiles is not included to 
-      prove selective manipulation. 
+This Demo explores changing the color of tiles from white to blue
+and vice versa via mouse interaction. 

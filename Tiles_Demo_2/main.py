@@ -46,6 +46,7 @@ def main():
                         mouse.detect_collision(game_board)
                     elif event.button == 3:
                         print("right mouse button pressed")
+                        mouse.detect_collision(game_board)
 
         # Update tiles
         update_tiles()

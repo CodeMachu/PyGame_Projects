@@ -21,7 +21,6 @@ class Mouse():
                 if tile.rect.collidepoint(self.pos):
                     print(f'Collision at: [{tile.rect.x//40}][{tile.rect.y//40}]')
                     tile.image = pygame.image.load(os.path.join('Map/blue_tile.png'))
-                    return True
                     
 
 # Create Mouse 
