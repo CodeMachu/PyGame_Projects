@@ -12,4 +12,4 @@ class Window():
     # self.screen.blit(image, rect) OR window.screen.blit(image, rect)
 
 # Window Tool
-window = Window(440, 440, "Tiles Demo")
+window = Window(440, 440, "Tiles Demo 0")
