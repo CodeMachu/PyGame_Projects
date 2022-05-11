@@ -17,11 +17,6 @@ def update_tiles():
     game_board.draw_tiles(window)
     pygame.display.update()
 
-def change_color():
-    mouse.detect_collision(game_board)
-    if mouse.detect_collision(game_board):
-        print('True')
-
 # Main
 def main():
 
@@ -41,12 +36,7 @@ def main():
                 pygame.quit()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                    if event.button == 1:
-                        print("left mouse button pressed")
-                        mouse.detect_collision(game_board)
-                    elif event.button == 3:
-                        print("right mouse button pressed")
-                        mouse.detect_collision(game_board)
+                mouse.detect_collision(game_board, event.button)       
 
         # Update tiles
         update_tiles()
