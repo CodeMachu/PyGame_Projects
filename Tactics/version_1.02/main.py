@@ -1,14 +1,27 @@
 import pygame
 
 from window import *
+from clock import *
+from main_menu import *
 
 # Initialize Pygame
 pygame.init()
 
 # Update Screen
-def update_screen():
+def update_screen(window):
+    # Reset Screen to Black
     window.screen.fill((0, 0, 0))
+    # Clock Display
+    clock.display_time(window)
+    # Main Menu Display
+    main_menu.display_menu(window)
+    # Update Display
     pygame.display.update()
+
+# Detect Clicking
+def detect_clicks():
+    # Main Menu Clicks
+    main_menu.detect_click()
 
 # Main Method
 def main():
@@ -21,14 +34,23 @@ def main():
         # have passed since last check and adjusts accordingly
         clock.tick(FPS)
 
-        # Check to see if exit button has been clicked
+        # Check to see if any events have taken place
         for event in pygame.event.get():
-            # If so, terminate program
+            # QUIT, terminate program
             if event.type == pygame.QUIT:
                 pygame.quit()
+            # LEFT CLICK
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    print("Left Click")
+                    detect_clicks()
+            # RIGHT CLICK
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 3:
+                    print("Right Click")
 
         # Main Game Events
-        update_screen()
+        update_screen(window)
 
 # Run Game
 if __name__ == "__main__":
