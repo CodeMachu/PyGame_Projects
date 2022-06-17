@@ -8,7 +8,7 @@ from mouse import *
 # Initialize pygame
 pygame.init()
 
-# Load game board tiles
+# Load game board tileset imported from tiles.py
 game_board.load_tiles(game_board_images_loc)
                     
 # Update and display tiles

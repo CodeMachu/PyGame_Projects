@@ -19,7 +19,7 @@ class Mouse():
         for tile in tilemap.tiles:
             if tile.rect.x > 0 and tile.rect.y > 0 and tile.rect.x < 400 and tile.rect.y < 400:
                 if tile.rect.collidepoint(self.pos):
-                    print(f'Collision at: [{tile.rect.x//40}][{tile.rect.y//40}]')
+                    print(f'Collision at: x = {tile.rect.x//40}, y = {tile.rect.y//40}')
 
                     if event == 1:
                         print("left mouse button pressed")
