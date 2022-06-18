@@ -4,14 +4,14 @@ class Window():
 
     def __init__(self, width, height, caption):
 
-        # Set screen dimensions
+        # Initialize and set screen dimensions
         self.screen = pygame.display.set_mode((width, height))
 
         # Set caption
         pygame.display.set_caption(caption)
 
-    # To draw image onto screen, use code on next line
-    # self.screen.blit(image, rect) OR window.screen.blit(image, rect)
-
 # Window Tool
-window = Window(800, 720, "Tactics")
+window = Window(440, 440, "Tactics")
+
+# To draw image onto screen, use code below
+# window.screen.blit(image, rect)
