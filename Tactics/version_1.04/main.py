@@ -2,6 +2,7 @@ import pygame
 
 from window import *
 from background import *
+from tiles import *
 from clock import *
 from main_menu import *
 
@@ -14,6 +15,8 @@ def update_screen(window):
     window.screen.fill((0, 0, 0))
     # Background Display
     background.move(window)
+    # Tilemap Display
+    blank_tilemap.display_map(window)
     # Clock Display
     clock.display_time(window)
     # Main Menu Display
@@ -24,7 +27,7 @@ def update_screen(window):
 # Detect Clicking
 def detect_clicks():
     # Main Menu Clicks
-    main_menu.detect_click()
+    main_menu.detect_click(blank_tilemap)
 
 # Main Method
 def main():

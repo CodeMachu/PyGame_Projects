@@ -76,7 +76,7 @@ class MainMenu():
                 window.screen.blit(self.image_array[2], self.scores_rect)
 
     # Detect Click
-    def detect_click(self):
+    def detect_click(self, tilemap):
 
         # Get Mouse Position
         pos = pygame.mouse.get_pos()
@@ -88,6 +88,7 @@ class MainMenu():
                 print("Entering Game")
                 # Turn main menu off, class selection on
                 self.is_on = False
+                tilemap.is_on = True
             # Load Game
             if self.load_game_rect.collidepoint(pos):
                 print("Entering Load Game\n - Choose File Save")
