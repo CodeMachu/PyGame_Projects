@@ -41,7 +41,7 @@ class TileMap():
             # Iterate by Value
             for value in row:
                 self.tiles.append(Tile(filepath[value], x * self.tile_size, y * self.tile_size))
-                        
+
                 # Next Tile
                 x += 1
 
@@ -59,7 +59,8 @@ class TileMap():
 # Filepath Array
 tiles_array = [
                 'Images/blank_tile.png',
-                'Images/white_tile.png'
+                'Images/white_tile.png',
+                'Images/grey_tile.png'
                 ]
 
 # Starting Tilemap List
@@ -78,4 +79,5 @@ blank_map = [
 # Starting Tilemap
 blank_tilemap = TileMap(tiles_array, blank_map)
 
-
+# Scores Tile
+scores = Tile('Images/score.png', 10, 10)

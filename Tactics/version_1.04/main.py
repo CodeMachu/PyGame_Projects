@@ -1,3 +1,4 @@
+from turtle import back
 import pygame
 
 from window import *
@@ -13,14 +14,14 @@ pygame.init()
 def update_screen(window):
     # Reset Screen to Black
     window.screen.fill((0, 0, 0))
-    # Background Display
-    background.move(window)
     # Tilemap Display
     blank_tilemap.display_map(window)
     # Clock Display
     clock.display_time(window)
     # Main Menu Display
     main_menu.display_menu(window)
+    # Scores Display
+
     # Update Display
     pygame.display.update()
 

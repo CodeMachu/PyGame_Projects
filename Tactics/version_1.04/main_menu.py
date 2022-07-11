@@ -60,19 +60,19 @@ class MainMenu():
                 window.screen.blit(self.image_array[0], self.new_game_rect)
             if self.load_game_rect.collidepoint(pos):
                 self.load_game_rect = self.image_array[4].get_rect()
-                self.load_game_rect.center = (220, 140)
+                self.load_game_rect.center = (220, 145)
                 window.screen.blit(self.image_array[4], self.load_game_rect)
             else:
                 self.load_game_rect = self.image_array[1].get_rect()
-                self.load_game_rect.center = (220, 140)
+                self.load_game_rect.center = (220, 145)
                 window.screen.blit(self.image_array[1], self.load_game_rect)
             if self.scores_rect.collidepoint(pos):
                 self.scores_rect = self.image_array[5].get_rect()
-                self.scores_rect.center = (220, 180)
+                self.scores_rect.center = (220, 190)
                 window.screen.blit(self.image_array[5], self.scores_rect)
             else:
                 self.scores_rect = self.image_array[2].get_rect()
-                self.scores_rect.center = (220, 180)
+                self.scores_rect.center = (220, 190)
                 window.screen.blit(self.image_array[2], self.scores_rect)
 
     # Detect Click
