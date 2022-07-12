@@ -6,6 +6,8 @@ pygame.init()
 class Mouse():
 
     def __init__(self):
+        
+        print("Global Mouse Tool Instantiated - Datatype: Mouse() Object")
 
         # Left and Right Click Switches
         self.left_clicked = False
@@ -20,6 +22,3 @@ class Mouse():
 
         self.right_clicked = True
         print(f"Mouse Right Clicked - at position: {pygame.mouse.get_pos()}")
-
-# Mouse Tool
-mouse = Mouse()

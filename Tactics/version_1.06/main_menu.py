@@ -1,6 +1,5 @@
 import pygame
 import os
-from config import window
 
 # Initialize Pygame
 pygame.init()
@@ -8,6 +7,8 @@ pygame.init()
 class MainMenu():
 
     def __init__(self):
+
+        print("Global Main_Menu Tool Instantiated - Datatype: MainMenu() Object")
 
         # Menu On/Off Switches
         self.is_on = True
@@ -35,7 +36,7 @@ class MainMenu():
         self.scores_rect.center = (427, 240)
 
     # Display Menu If On
-    def display_menu(self):
+    def display_menu(self, window):
 
         if self.is_on:
 
@@ -69,7 +70,7 @@ class MainMenu():
                 window.screen.blit(self.image_array[4], self.scores_rect)
 
     # Detect Click
-    def detect_click(self, mouse, tilemap, player, clock):
+    def detect_click(self, mouse, tilemap, clock, player):
 
         if self.is_on:
             if mouse.left_clicked == True:
@@ -93,6 +94,3 @@ class MainMenu():
                 if self.scores_rect.collidepoint(pos):
                     print("Displaying Hi-Scores")
                     self.is_on = False
-
-# Main Menu Tool
-main_menu = MainMenu()

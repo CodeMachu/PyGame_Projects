@@ -1,44 +1,30 @@
 # Application Start Point
 import pygame
 
-# Import global variables before importing modules that will use these globals
-print("Importing Configuration...")
-from config import *
-create_globals()
-
-# Import all modules
-print("Importing 'from window'")
-from window import *
-print(window)
-print("Importing 'from tiles'")
-from tiles import *
-print("Importing 'from fps'")
-from fps import *
-print("Importing 'from clock'")
-from clock import *
-print("Importing 'from mouse'")
-from mouse import *
-print("Importing 'from main_menu'")
-from main_menu import *
-print("Importing 'from player'")
-from player import *
-
-#from test2 import *
-
 # Initialize Pygame
 pygame.init()
+
+# Import and Instantiate Global Tools
+print("Instantiating Global Tools...")
+from config import window
+from config import mouse
+from config import tilemap
+from config import fps
+from config import clock
+from config import main_menu
+from config import player
 
 # Update Screen
 def update_screen():
     # Reset Screen to Black
     window.screen.fill((0, 0, 0))
     # Main Menu Clicks and Display
-    main_menu.detect_click(mouse, current_tilemap, player, clock)
-    main_menu.display_menu()
+    main_menu.detect_click(mouse, tilemap, clock, player)
+    main_menu.display_menu(window)
     # Tilemap Clicks and Display
-    current_tilemap.detect_left_click(mouse)
-    current_tilemap.detect_right_click(mouse)
-    current_tilemap.display_map(window)
+    tilemap.detect_left_click(mouse)
+    tilemap.detect_right_click(mouse)
+    tilemap.display_map(window)
     # FPS Display
     fps.display_fps(window)
     # Clock Display

@@ -1,6 +1,5 @@
 import pygame
 import os
-from config import *
 
 # Initialize Pygame
 pygame.init()
@@ -27,6 +26,8 @@ class Tile():
 class TileMap():
 
     def __init__(self, filepath_array, list):
+
+        print("Global Tilemap Tool Instantiated - Datatype: TileMap() Object")
 
         # Tilemap On/Off Switch
         self.is_on = False
@@ -77,7 +78,6 @@ class TileMap():
     def display_map(self, window):
 
         if self.is_on:
-
             window.screen.blit(self.surface, self.rect)
 
     # Detect Left Click on Tile
@@ -130,9 +130,3 @@ white_tile_list = [
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
             ]
-
-# Starting Tilemap
-white_tilemap = TileMap(tiles_array, white_tile_list)
-
-# Global Variable
-current_tilemap = white_tilemap

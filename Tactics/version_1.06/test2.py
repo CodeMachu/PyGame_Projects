@@ -109,4 +109,4 @@ def highlight_path(tilemap, path):
 
             tile.image = grey_tile
 
-highlight_path(white_tilemap, find_shortest_path(1, 221))
+highlight_path(tilemap, find_shortest_path(1, 221))

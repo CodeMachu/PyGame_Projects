@@ -8,6 +8,8 @@ class Player():
 
     def __init__(self, filepath, x, y):
 
+        print("Global Player Tool Instantiated - Datatype: Player() Object")
+
         # Player On/Off Switch
         self.is_on = False
         
@@ -49,6 +51,3 @@ class Player():
 
                 if self.rect.collidepoint(pos):
                     print("Player Right Clicked")
-
-# Player 
-player = Player('Images/player.png', 427, 337)
