@@ -10,12 +10,14 @@ def create_graph(tilemap):
     graph = {}
     
     for tile in tilemap.tiles:
+
         key = tile.id
 
         # start empty array for each key
         graph[key] = []
 
         for tile_2 in tilemap.tiles:
+
             # Check above tile
             if tile_2.rect.x == tile.rect.x and tile_2.rect.y == tile.rect.y - 45:
                 graph[key].append(tile_2.id)
@@ -35,7 +37,7 @@ def create_graph(tilemap):
 graph = create_graph(white_tilemap)
 
 # print graph values
-print("\nNode Adjacency Dictionary...")
+print("\nPrinting Graph Key -> Values...")
 for node in graph:
     print(node, "->", graph[node])
 
@@ -68,7 +70,7 @@ def breadth_first_search(graph, visited, start_node, end_node):
                     queue.append(neighbor)
                     prev_node[neighbor] = current_node                  
 
-    print("Previous Node Dictionary:")
+    print("\nPrevious Node Dictionary:\n")
     for node in prev_node:
         print(node, "->", prev_node[node])
 
@@ -77,36 +79,6 @@ def breadth_first_search(graph, visited, start_node, end_node):
 # Run BFS and assign array to a variable
 bfs = breadth_first_search(graph, visited, 1, 221)
 
-def find_shortest_path(start_node, end_node):
-
-    # Create an empty array for backward path order
-    backward_path = []
-
-    # Set current node to end node
-    current_node = end_node
-
-    # Work backwards through the Prev_Node Graph until you reach the start node
-    while current_node != start_node:
-
-        backward_path.append(current_node)
-        current_node = prev_node[current_node]
-
-    # Correct Path Order
-    backward_path.reverse()
-
-    print("\nShortest Path")
-    print(backward_path)
-
-    return backward_path
-
-def highlight_path(tilemap, path):
-
-    grey_tile = pygame.image.load(os.path.join("Images/grey_tile.png"))
-
-    for tile in tilemap.tiles:
-
-        if tile.id in path:
-
-            tile.image = grey_tile
-
-highlight_path(tilemap, find_shortest_path(1, 221))
+# Print Prev_Node Graph
+print("\nPrinting Prev_Node Graph")
+print(prev_node)

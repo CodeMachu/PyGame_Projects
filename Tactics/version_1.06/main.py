@@ -1,34 +1,34 @@
-# Application Start Point
 import pygame
+
+from window import *
+from background import *
+from mouse import *
+from tiles import *
+from clock import *
+from fps import *
+from main_menu import *
+from player import *
 
 # Initialize Pygame
 pygame.init()
 
-# Import and Instantiate Global Tools
-print("Instantiating Global Tools...")
-from config import window
-from config import mouse
-from config import tilemap
-from config import fps
-from config import clock
-from config import main_menu
-from config import player
-
 # Update Screen
-def update_screen():
+def update_screen(window):
     # Reset Screen to Black
     window.screen.fill((0, 0, 0))
+    # Background
+    # background.move(window)
     # Main Menu Clicks and Display
-    main_menu.detect_click(mouse, tilemap, clock, player)
+    main_menu.detect_click(mouse, white_tilemap, player, clock)
     main_menu.display_menu(window)
     # Tilemap Clicks and Display
-    tilemap.detect_left_click(mouse)
-    tilemap.detect_right_click(mouse)
-    tilemap.display_map(window)
-    # FPS Display
-    fps.display_fps(window)
+    white_tilemap.detect_left_click(mouse)
+    white_tilemap.detect_right_click(mouse)
+    white_tilemap.display_map(window)
     # Clock Display
     clock.display_time(window)
+    # FPS Display
+    fps.display_fps(window)
     # Player CLicks and Display
     player.detect_left_click(mouse)
     player.detect_right_click(mouse)
@@ -66,9 +66,7 @@ def main():
                     mouse.right_click()
 
         # Main Game Events
-        update_screen()
-
-
+        update_screen(window)
 
 # Run Game
 if __name__ == "__main__":

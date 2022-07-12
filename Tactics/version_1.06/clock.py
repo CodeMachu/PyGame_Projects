@@ -1,4 +1,5 @@
 import pygame
+
 from datetime import datetime
 
 # Initialize Pygame
@@ -7,8 +8,6 @@ pygame.init()
 class Clock():
 
     def __init__(self):
-
-        print("Global Clock Tool Instantiated - Datatype: Clock() Object")
         
         # Clock On/Off Switch
         self.is_on = True
@@ -36,3 +35,6 @@ class Clock():
 
             # Display Time
             window.screen.blit(self.text, self.rect)
+
+# Clock Tool
+clock = Clock()

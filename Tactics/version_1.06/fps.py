@@ -6,8 +6,6 @@ pygame.init()
 class FPS():
 
     def __init__(self):
-
-        print("Global FPS Tool Instantiated - Datatype: FPS() Object")
         
         # FPS On/Off Switch
         self.is_on = True
@@ -47,3 +45,6 @@ class FPS():
 
             # Display Time
             window.screen.blit(self.text, self.rect)
+
+# FPS Tool
+fps = FPS()

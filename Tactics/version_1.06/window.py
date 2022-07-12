@@ -4,13 +4,14 @@ class Window():
 
     def __init__(self, width, height, caption):
 
-        print("Global Window Tool Instantiated - Datatype: Window() Object")
-
         # Initialize and set screen dimensions
         self.screen = pygame.display.set_mode((width, height))
 
         # Set caption
         pygame.display.set_caption(caption)
 
+# Window Tool
+window = Window(855, 675, "Graph Algorithms")
+
 # To draw image onto screen, use code below
-# Window.screen.blit(image, rect)
+# window.screen.blit(image, rect)

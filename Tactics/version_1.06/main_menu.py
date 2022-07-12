@@ -8,8 +8,6 @@ class MainMenu():
 
     def __init__(self):
 
-        print("Global Main_Menu Tool Instantiated - Datatype: MainMenu() Object")
-
         # Menu On/Off Switches
         self.is_on = True
 
@@ -70,7 +68,7 @@ class MainMenu():
                 window.screen.blit(self.image_array[4], self.scores_rect)
 
     # Detect Click
-    def detect_click(self, mouse, tilemap, clock, player):
+    def detect_click(self, mouse, tilemap, player, clock):
 
         if self.is_on:
             if mouse.left_clicked == True:
@@ -94,3 +92,6 @@ class MainMenu():
                 if self.scores_rect.collidepoint(pos):
                     print("Displaying Hi-Scores")
                     self.is_on = False
+
+# Main Menu Tool
+main_menu = MainMenu()

@@ -1,5 +1,3 @@
-import config
-config.create_globals()
+import webbrowser
 
-from config import window
-print(window)
+webbrowser.open('http://google.com')
