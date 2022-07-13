@@ -98,7 +98,7 @@ class TileMap():
     # Display Path
     def display_path(self, window, tilemap, player, graph):
 
-        if self.is_on:
+        if self.is_on: 
 
             # Get Mouse Position
             pos = pygame.mouse.get_pos()
