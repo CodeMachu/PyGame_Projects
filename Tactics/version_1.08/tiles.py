@@ -1,3 +1,4 @@
+from string import whitespace
 import pygame
 import os
 
@@ -6,10 +7,12 @@ pygame.init()
 
 class Tile():
 
-    def __init__(self, id, filepath, x, y):
+    def __init__(self, id, x, y):
 
         # Assign an image to the tile
-        self.image = pygame.image.load(os.path.join(filepath))
+        self.white_tile_png = pygame.image.load(os.path.join('Images/white_tile.png'))
+        self.grey_tile_png = pygame.image.load(os.path.join('Images/grey_tile.png'))
+        self.image = self.white_tile_png
 
         # Create a rectangle object from the size of the image
         self.rect = self.image.get_rect()
@@ -25,11 +28,11 @@ class Tile():
 
 class TileMap():
 
-    def __init__(self, filepath_array, list):
+    def __init__(self, list):
 
         print("Global Tilemap Tool Instantiated - Datatype: TileMap() Object")
 
-        # Tilemap On/Off Switch
+        # Tilemap On/Off Switches
         self.is_on = False
 
         # Set tile size
@@ -44,7 +47,7 @@ class TileMap():
         self.rect.topleft = 0, 0
 
         # For creating tile id's
-        id_counter = 0
+        self.id_counter = 0
         self.font = pygame.font.SysFont('cambria', 10)
 
         y = 1
@@ -55,8 +58,8 @@ class TileMap():
 
             # Iterate by Value
             for value in row:
-                id_counter += 1
-                self.tiles.append(Tile(id_counter, filepath_array[value], x * self.tile_size, y * self.tile_size))
+                self.id_counter += 1
+                self.tiles.append(Tile(self.id_counter, x * self.tile_size, y * self.tile_size))
 
                 # Next Tile
                 x += 1
@@ -65,13 +68,19 @@ class TileMap():
             y += 1
 
         # Instantiate Tiles
-        self.update_tiles()
+        self.reset_tiles()
 
-    def update_tiles(self):
+    def reset_tiles(self):
+
+        print("Tiles Reset")
+
+        # Reset Tilemap Surface
+        self.surface.fill((0, 0, 0))
 
         # Draw all tiles to a single surface
         for tile in self.tiles:
 
+            tile.image = tile.white_tile_png
             tile.text = self.font.render(f'{tile.id}', True, (0, 0, 0))
             tile.text_rect = tile.text.get_rect()
             tile.text_rect.center = tile.rect.center
@@ -83,10 +92,30 @@ class TileMap():
     def display_map(self, window):
 
         if self.is_on:
+            self.reset_tiles()
             window.screen.blit(self.surface, self.rect)
 
+    # Display Path
+    def display_path(self, window, tilemap, player, graph):
+
+        if self.is_on:
+
+            # Get Mouse Position
+            pos = pygame.mouse.get_pos()
+
+            for tile in tilemap.tiles:
+
+                if tile.rect.collidepoint(pos):
+                    graph.bfs(player.return_tile_position(tilemap), self.return_tile_position(), tilemap)
+
+            tilemap.surface.blit(tile.image, (tile.rect.x, tile.rect.y))
+            tilemap.surface.blit(tile.text, (tile.text_rect.x, tile.text_rect.y))
+            
+            print("window.screen.blit(self.surface, self.rect)")
+            window.screen.blit(tilemap.surface, tilemap.rect)
+
     # Detect Left Click on Tile
-    def detect_left_click(self, mouse, tilemap, player, graph):
+    def detect_left_click(self, mouse):
 
         if self.is_on:
             if mouse.left_clicked == True:
@@ -99,10 +128,8 @@ class TileMap():
                     if tile.rect.collidepoint(pos):
                         print(f"Tile: {tile.id} Left Clicked")
 
-                        graph.bfs(player.return_tile_position(tilemap), tilemap.return_tile_position(), tilemap)
-
     # Detect Right Click on Tile
-    def detect_right_click(self, mouse, player):
+    def detect_right_click(self, mouse):
 
         if self.is_on:
             if mouse.right_clicked == True:
@@ -132,11 +159,6 @@ class TileMap():
         print(f"Tile Destination: {tile_pos}")
         return tile_pos
 
-# Filepath Array
-tiles_array = [
-                'Images/blank_tile.png',
-                'Images/white_tile.png'
-                ]
 
 # Starting Tilemap List
 white_tile_list = [

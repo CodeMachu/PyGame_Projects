@@ -13,3 +13,15 @@ num = funktion()
 
 print(num)
 
+
+print('Next')
+import pygame
+pygame.init()
+
+# Get Mouse Position
+pos = pygame.mouse.get_pos()
+x, y = pos
+
+print(pos)
+print(x)
+print(y)

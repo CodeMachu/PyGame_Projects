@@ -3,7 +3,7 @@ from graph import Graph
 
 from window import Window
 from mouse import Mouse
-from tiles import TileMap, tiles_array, white_tile_list
+from tiles import TileMap, white_tile_list
 from fps import FPS
 from clock import Clock
 from main_menu import MainMenu
@@ -22,7 +22,7 @@ def create_globals():
     mouse = Mouse()
 
     global tilemap
-    tilemap = TileMap(tiles_array, white_tile_list)
+    tilemap = TileMap(white_tile_list)
 
     global fps
     fps = FPS()

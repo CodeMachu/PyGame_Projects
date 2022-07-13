@@ -23,9 +23,10 @@ def update_screen():
     main_menu.detect_click(mouse, tilemap, clock, player)
     main_menu.display_menu(window)
     # Tilemap Clicks and Display
-    tilemap.detect_left_click(mouse, tilemap, player, graph)
-    tilemap.detect_right_click(mouse, player)
-    tilemap.display_map(window)
+    tilemap.detect_left_click(mouse)
+    tilemap.detect_right_click(mouse)
+    #tilemap.display_map(window)
+    tilemap.display_path(window, tilemap, player, graph)
     # FPS Display
     fps.display_fps(window)
     # Clock Display
@@ -34,6 +35,7 @@ def update_screen():
     player.detect_left_click(mouse)
     player.detect_right_click(mouse)
     player.display_player(window)
+    player.display_menu(window)
 
     # Update Display
     pygame.display.update()

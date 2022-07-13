@@ -70,11 +70,11 @@ class Graph():
                         visited.append(neighbor)
                         queue.append(neighbor)
                         self.prev_node_dict[neighbor] = current_node                  
-
+        '''
         print(" Printing Previous Node Dictionary:\n")
         for node in self.prev_node_dict:
             print(node, "->", self.prev_node_dict[node])
-
+        '''
         # Return Shortest Path
         shortest_path = self.shortest_path(start_node, end_node)
 
@@ -82,9 +82,8 @@ class Graph():
         for tile in tilemap.tiles:
 
             if tile.id in shortest_path:
-                tile.image = pygame.image.load(os.path.join('Images/grey_tile.png'))
-
-        tilemap.update_tiles()
+                print(f"Tile: {tile.id} Image Updated")
+                tile.image = tile.grey_tile_png
 
     # Find Shortest Path
     def shortest_path(self, start_node, end_node):
