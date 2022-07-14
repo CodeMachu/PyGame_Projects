@@ -7,6 +7,8 @@ from fps import FPS
 from clock import Clock
 from main_menu import MainMenu
 from tiles import TileMap
+from player import Player
+from graph import Graph
 
 
 # ----------------------------------------------------------------------------------------------------
@@ -20,6 +22,9 @@ def init_globals():
     global mouse
     mouse = Mouse()
 
+    global player 
+    player = Player()
+
     global fps
     fps = FPS()
 
@@ -31,6 +36,10 @@ def init_globals():
 
     global tilemap
     tilemap = TileMap(45, 17, 13)
+
+    global graph
+    graph = Graph()
+    graph.init_adjacency_lists(tilemap)
 
 # ----------------------------------------------------------------------------------------------------
 

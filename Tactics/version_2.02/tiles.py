@@ -1,4 +1,3 @@
-from turtle import width
 import pygame
 pygame.init()
 
@@ -41,9 +40,11 @@ class TileMap():
         # Tilemap On/Off Switches
         self.is_on = False
         self.tile_updated = False
+        self.highlight_tile_is_on = False
 
-        # Default Image
+        # Tile Images
         self.default_tile = pygame.image.load(os.path.join('Images', 'white_tile.png'))
+        self.highlight_tile = pygame.image.load(os.path.join('Images', 'highlight_tile.png'))
 
         # Set tile size
         self.tile_size = tilesize
@@ -57,8 +58,13 @@ class TileMap():
 
         # A single surface for drawing all tiles at once
         self.surface = pygame.Surface((855, 675)) # same size as window
+        self.surface_2 = None
+
+        # TileMap Rectangles
         self.rect = self.surface.get_rect()
         self.rect.topleft = 0, 0
+        self.highlight_tile_rect = self.highlight_tile.get_rect()
+        self.highlight_tile_rect.topleft = 0, 0
 
         # For creating tile id's
         self.id_counter = 0
@@ -91,6 +97,7 @@ class TileMap():
             self.surface.blit(self.tileset[tile].image, self.tileset[tile].rect)
             self.surface.blit(self.tileset[tile].text, self.tileset[tile].text_rect)
 
+
 # ----------------------------------------------------------------------------------------------------
 
     # Update TileMap
@@ -98,6 +105,8 @@ class TileMap():
 
         if self.is_on:
             if mouse.tile_pos != None:
+
+                self.highlight_tile_is_on = True
             
                 # Check Left Click
                 if mouse.left_clicked:
@@ -115,17 +124,35 @@ class TileMap():
 
                     # Draw all tiles to surface
                     for tile in self.tileset:
-                        self.surface.blit(tile.image, tile.rect)
-                        self.surface.blit(tile.text, tile.text_rect)
+                        self.surface.blit(self.tileset[tile].image, self.tileset[tile].rect)
+                        self.surface.blit(self.tileset[tile].text, self.tileset[tile].text_rect)
+
+                # Draw Highlight Tile to Surface
+                if self.highlight_tile_is_on:
+                    for tile in self.tileset:
+                        if self.tileset[tile].rect.collidepoint(mouse.pos):
+
+                            self.highlight_tile_rect.center = self.tileset[tile].rect.center
+
+            else:
+                self.highlight_tile_is_on = False
+
+        else:
+            self.highlight_tile_is_on = False
 
 # ----------------------------------------------------------------------------------------------------
 
     # Display TileMap
-    def display_map(self, window):
+    def display(self, window):
 
         if self.is_on:
 
             # Display Surface
             window.screen.blit(self.surface, self.rect)
+
+        if self.highlight_tile_is_on:
+            
+            # Display Highlight Tile
+            window.screen.blit(self.highlight_tile, self.highlight_tile_rect)
 
 # ----------------------------------------------------------------------------------------------------

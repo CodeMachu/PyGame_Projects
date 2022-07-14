@@ -38,7 +38,7 @@ class MainMenu():
 # ----------------------------------------------------------------------------------------------------
 
     # Update Menu Clicked Status
-    def update_clicked(self, mouse, tilemap):
+    def update(self, mouse, tilemap, player):
 
         if self.is_on:
             if mouse.left_clicked == True:
@@ -51,6 +51,7 @@ class MainMenu():
                     # Menu Off
                     self.is_on = False
                     tilemap.is_on = True
+                    player.is_on = True
 
                 # Load Game
                 if self.load_game_rect.collidepoint(pos):

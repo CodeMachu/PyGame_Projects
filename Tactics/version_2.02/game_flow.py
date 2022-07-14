@@ -55,9 +55,9 @@ def update_all():
     mouse.update_pos(tilemap)
     # TileMap
     tilemap.update(mouse)
-    tilemap.display_map(window)
+    tilemap.display(window)
     # Main Menu
-    main_menu.update_clicked(mouse, tilemap)
+    main_menu.update(mouse, tilemap, player)
     main_menu.display(window, mouse)
     # FPS
     fps.update()
@@ -65,6 +65,9 @@ def update_all():
     # Clock
     clock.update()
     clock.display(window)
+    # Player
+    player.update_clicked(mouse)
+    player.display(window)
 
     # Update Pygame Display
     pygame.display.update()
