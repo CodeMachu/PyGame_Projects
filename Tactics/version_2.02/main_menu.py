@@ -25,15 +25,15 @@ class MainMenu():
                             
         # New Game Button
         self.new_game_rect = self.image_1.get_rect()
-        self.new_game_rect.center = (427, 100)
+        self.new_game_rect.center = (427, 110)
 
         # Load Game Button
         self.load_game_rect = self.image_3.get_rect()
-        self.load_game_rect.center = (427, 170)
+        self.load_game_rect.center = (427, 180)
 
         # Scores Button
         self.scores_rect = self.image_5.get_rect()
-        self.scores_rect.center = (427, 240)
+        self.scores_rect.center = (427, 250)
 
 # ----------------------------------------------------------------------------------------------------
 
@@ -78,27 +78,27 @@ class MainMenu():
             # Detect Collision with each Button
             if self.new_game_rect.collidepoint(pos):
                 self.new_game_rect = self.image_2.get_rect()
-                self.new_game_rect.center = (427, 100)
+                self.new_game_rect.center = (427, 110)
                 window.screen.blit(self.image_2, self.new_game_rect)
             else:
                 self.new_game_rect = self.image_1.get_rect()
-                self.new_game_rect.center = (427, 100)
+                self.new_game_rect.center = (427, 110)
                 window.screen.blit(self.image_1, self.new_game_rect)
             if self.load_game_rect.collidepoint(pos):
                 self.load_game_rect = self.image_4.get_rect()
-                self.load_game_rect.center = (427, 170)
+                self.load_game_rect.center = (427, 180)
                 window.screen.blit(self.image_4, self.load_game_rect)
             else:
                 self.load_game_rect = self.image_3.get_rect()
-                self.load_game_rect.center = (427, 170)
+                self.load_game_rect.center = (427, 180)
                 window.screen.blit(self.image_3, self.load_game_rect)
             if self.scores_rect.collidepoint(pos):
                 self.scores_rect = self.image_6.get_rect()
-                self.scores_rect.center = (427, 240)
+                self.scores_rect.center = (427, 250)
                 window.screen.blit(self.image_6, self.scores_rect)
             else:
                 self.scores_rect = self.image_5.get_rect()
-                self.scores_rect.center = (427, 240)
+                self.scores_rect.center = (427, 250)
                 window.screen.blit(self.image_5, self.scores_rect)
 
 # ----------------------------------------------------------------------------------------------------

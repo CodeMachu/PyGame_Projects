@@ -66,7 +66,7 @@ def update_all():
     clock.update()
     clock.display(window)
     # Player
-    player.update_clicked(mouse)
+    player.update_clicked(mouse, tilemap)
     player.display(window)
 
     # Update Pygame Display

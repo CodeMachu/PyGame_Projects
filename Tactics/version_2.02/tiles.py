@@ -43,8 +43,8 @@ class TileMap():
         self.highlight_tile_is_on = False
 
         # Tile Images
-        self.default_tile = pygame.image.load(os.path.join('Images', 'white_tile.png'))
-        self.highlight_tile = pygame.image.load(os.path.join('Images', 'highlight_tile.png'))
+        self.default_tile = pygame.image.load(os.path.join('Images', 'white_tile_3.png'))
+        self.highlight_tile = pygame.image.load(os.path.join('Images', 'purple_highlight_tile.png'))
 
         # Set tile size
         self.tile_size = tilesize

@@ -44,6 +44,8 @@ class Mouse():
 
         if event_button == 1:
             self.left_clicked = True
+
+            print(self.pos)
         if event_button == 3:
             self.right_clicked = True
 
